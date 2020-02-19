@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZSPM_IDOC_APPR_WB_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="openAdjustment" sap:content-version="1">
+				<Key><PropertyRef Name="idocNumber"/><PropertyRef Name="messageType"/></Key><Property Name="createTimeStamp" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false"
+					sap:updatable="false" sap:filterable="false"/><Property Name="idocNumber" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="IDoc number"
+					sap:creatable="false" sap:updatable="false"/><Property Name="messageType" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Message Type"
+					sap:creatable="false" sap:updatable="false"/><Property Name="amount" Type="Edm.Decimal" Precision="12" Scale="3" sap:unicode="false" sap:unit="currencyKey" sap:label="Amount"
+					sap:creatable="false" sap:updatable="false"/><Property Name="adjStatus" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Adjustment Status"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="adjStatusDescr" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Adjustment Status"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="remarks" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Long comment"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="reciverPort" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Receiver port"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="recieverPartnerType" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Rec.Partn.Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="reciever" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Receiver" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="senderPort" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sender port"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="senderPartnerType" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Sender type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="sender" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sender" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="idocReference" Type="Edm.String" Nullable="false" MaxLength="14" sap:unicode="false" sap:label="Interchange File"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="currencyKey" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Doc. Currency"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/></EntityType>
+			<EntityContainer Name="ZSPM_IDOC_APPR_WB_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="openAdjustmentSet" EntityType="ZSPM_IDOC_APPR_WB_SRV.openAdjustment" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<FunctionImport Name="approveRequest" ReturnType="ZSPM_IDOC_APPR_WB_SRV.openAdjustment" EntitySet="openAdjustmentSet" m:HttpMethod="POST"
+					sap:label="Accept Adjustment Request" sap:action-for="ZSPM_IDOC_APPR_WB_SRV.openAdjustment"><Parameter Name="messageType" Type="Edm.String" Mode="In" MaxLength="30"/><Parameter Name="idocNumber" Type="Edm.String" Mode="In" MaxLength="16"/></FunctionImport>
+				<FunctionImport Name="rejectRequest" ReturnType="ZSPM_IDOC_APPR_WB_SRV.openAdjustment" EntitySet="openAdjustmentSet" m:HttpMethod="POST"
+					sap:label="Reject Adjustment Request" sap:action-for="ZSPM_IDOC_APPR_WB_SRV.openAdjustment"><Parameter Name="idocNumber" Type="Edm.String" Mode="In" MaxLength="16"/><Parameter Name="messageType" Type="Edm.String" Mode="In" MaxLength="30"/></FunctionImport>
+			</EntityContainer><atom:link rel="self"
+				href="https://webidecp-cb8f4603b.dispatcher.ap1.hana.ondemand.com/destinations/BND/sap/opu/odata/sap/ZSPM_IDOC_APPR_WB_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-cb8f4603b.dispatcher.ap1.hana.ondemand.com/destinations/BND/sap/opu/odata/sap/ZSPM_IDOC_APPR_WB_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

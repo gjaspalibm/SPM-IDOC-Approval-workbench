@@ -1,0 +1,56 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" controllerName="mmal.spm.fi.ZSPM_IDOC_APPR_WB.controller.Detail">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<ObjectHeader id="objectHeader" title="IDoc Number: {idocNumber}" number="{ path: 'amount', formatter: '.formatter.currencyValue' }" numberUnit="{currencyKey}" intro="{remarks}" numberState="{ path: 'amount', formatter: '.formatter.numberState' }">
+				<statuses>
+					<ObjectStatus xmlns="sap.m" text="{adjStatusDescr}" state="{path: 'adjStatus', formatter: '.formatter.statusCriticality'}" id="status12" title="Status"/>
+				</statuses>
+				<attributes>
+					<ObjectAttribute text="{path: 'createTimeStamp', formatter :'.formatter.formatDate'}" id="attribute6" title="Created On"/>
+				</attributes>
+			</ObjectHeader>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}" text="IDoc Details">
+						<content>
+							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" id="form0">
+								<Label text="Message Type" width="100%" id="label1"/>
+								<Text text="{messageType}" id="text1"/>
+								<Label text="IDoc Reference" width="100%" id="label3"/>
+								<Text id="text1_1576632341526" text="{idocReference}"/>
+								<Label text="Receiver" width="100%" id="label0"/>
+								<Text text="{reciever}" id="text2"/>
+								<Label text="Receiver Type" width="100%" id="label1_1576631834909"/>
+								<Text text="{recieverPartnerType}" id="text3"/>
+								<Label text="Receiver Port" width="100%" id="label2"/>
+								<Text id="text4" text="{reciverPort}"/>
+								<Label text="Sender" width="100%" id="label0_1576632168668"/>
+								<Text id="text1_1576632178694" text="{sender}"/>
+								<Label text="Sender Type" width="100%" id="label1_1576632203160"/>
+								<Text text="{senderPartnerType}" id="text2_1576632223164"/>
+								<Label text="Sender Port" width="100%" id="label2_1576632247351"/>
+								<Text text="{senderPort}" id="text3_1576632264186"/>
+							</form:SimpleForm>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}" visible="false"/>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+		<semantic:positiveAction>
+			<semantic:PositiveAction text="Approve" id="actionAppr" press="onApprove"/>
+		</semantic:positiveAction>
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Reject" id="actionRej" press="onReject"/>
+		</semantic:negativeAction>
+	</semantic:DetailPage>
+</mvc:View>
