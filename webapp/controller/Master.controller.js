@@ -106,22 +106,6 @@ sap.ui.define([
 				return;
 			}
 
-			var sQuery = oEvent.getParameter("query");
-
-			if (sQuery) {
-				var idocFilter = new Filter("idocNumber", FilterOperator.Contains, sQuery);
-				var remarkFilter = new Filter({
-					path: "remarks",
-					caseSensitive: false,
-					operator: FilterOperator.Contains,
-					value1: sQuery
-				});
-				this._oListFilterState.aSearch = new sap.ui.model.Filter([idocFilter, remarkFilter], false);
-
-				// this._oListFilterState.aSearch = [new Filter("idocNumber", FilterOperator.Contains, sQuery)];
-			} else {
-				this._oListFilterState.aSearch = [];
-			}
 			this._applyFilterSearch();
 
 		},
